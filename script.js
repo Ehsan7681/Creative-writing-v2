@@ -36,9 +36,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedApiKey = localStorage.getItem('apiKey');
     if (savedApiKey) {
         apiKeyInput.value = savedApiKey;
+        
+        // اضافه کردن دکمه حذف کلید API
+        const apiKeyContainer = apiKeyInput.parentElement.parentElement;
+        const clearApiKeyBtn = document.createElement('button');
+        clearApiKeyBtn.className = 'btn clear-api-key';
+        clearApiKeyBtn.innerHTML = '<i class="fas fa-trash-alt"></i> حذف کلید ذخیره شده';
+        clearApiKeyBtn.addEventListener('click', () => {
+            if (confirm('آیا مطمئن هستید که می‌خواهید کلید API ذخیره شده را حذف کنید؟')) {
+                localStorage.removeItem('apiKey');
+                apiKeyInput.value = '';
+                clearApiKeyBtn.remove();
+                updateConnectionStatus(false, 'کلید API حذف شد');
+                isAPIConnected = false;
+            }
+        });
+        
+        // افزودن دکمه به DOM قبل از وضعیت اتصال
+        apiKeyContainer.insertBefore(clearApiKeyBtn, apiKeyContainer.querySelector('.connection-status'));
+        
         // آزمایش اتصال اتوماتیک اگر کلید API موجود باشد
         testConnectionBtn.click();
     }
+
+    // اضافه کردن استایل برای دکمه حذف کلید API
+    const clearApiKeyStyle = document.createElement('style');
+    clearApiKeyStyle.textContent = `
+        .clear-api-key {
+            margin-bottom: 10px;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: none;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+        }
+        .clear-api-key:hover {
+            background-color: #f5c6cb;
+        }
+    `;
+    document.head.appendChild(clearApiKeyStyle);
 
     // تنظیم کردن حالت تاریک/روشن
     const savedTheme = localStorage.getItem('theme');
