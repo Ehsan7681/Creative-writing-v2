@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تولیدکننده محتوای هوشمند ورژن 2</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="light-mode">
+    <div class="theme-toggle">
+        <button id="themeToggle" title="تغییر حالت تاریک/روشن">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>تولیدکننده محتوای هوشمند ورژن 2</h1>
+            <p>با استفاده از هوش مصنوعی، محتوای منحصر به فرد تولید کنید</p>
+        </header>
+
+        <main>
+            <section class="api-section">
+                <h2>تنظیمات API</h2>
+                <div class="api-settings">
+                    <div class="api-key-container">
+                        <label for="apiKey">کلید API اوپن‌روتر:</label>
+                        <div class="input-with-icon">
+                            <input type="password" id="apiKey" placeholder="کلید API خود را وارد کنید">
+                            <button id="toggleVisibility" title="نمایش/پنهان کردن کلید">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="connection-status">
+                            <span id="connectionIndicator" class="indicator"></span>
+                            <span id="connectionStatus">اتصال بررسی نشده</span>
+                        </div>
+                        <button id="testConnection" class="btn">آزمایش اتصال</button>
+                    </div>
+
+                    <div class="model-selection">
+                        <label for="model">انتخاب مدل هوش مصنوعی:</label>
+                        <div class="search-dropdown">
+                            <div class="search-container">
+                                <input type="text" id="modelSearch" placeholder="جستجوی مدل...">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <select id="model">
+                                <option value="" disabled selected>در حال بارگذاری مدل‌ها...</option>
+                            </select>
+                        </div>
+                        <button id="confirmModel" class="btn">تایید مدل</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>تنظیمات محتوا</h2>
+                <div class="form-group">
+                    <label for="topic">موضوع:</label>
+                    <input type="text" id="topic" placeholder="مثال: سفر">
+                </div>
+                
+                <div class="form-group">
+                    <label for="keywords">کلمات کلیدی (با کاما جدا کنید):</label>
+                    <input type="text" id="keywords" placeholder="مثال: طبیعت، ماجرا، آرامش">
+                </div>
+                
+                <div class="form-group">
+                    <label>لحن:</label>
+                    <div class="tone-options">
+                        <div class="tone-item">
+                            <input type="radio" id="tone-friendly" name="tone" value="friendly" checked>
+                            <label for="tone-friendly">دوستانه</label>
+                        </div>
+                        <div class="tone-item">
+                            <input type="radio" id="tone-formal" name="tone" value="formal">
+                            <label for="tone-formal">رسمی</label>
+                        </div>
+                        <div class="tone-item">
+                            <input type="radio" id="tone-casual" name="tone" value="casual">
+                            <label for="tone-casual">غیررسمی</label>
+                        </div>
+                        <div class="tone-item">
+                            <input type="radio" id="tone-literary" name="tone" value="literary">
+                            <label for="tone-literary">ادبی</label>
+                        </div>
+                        <div class="tone-item">
+                            <input type="radio" id="tone-creative" name="tone" value="creative">
+                            <label for="tone-creative">خلاقانه</label>
+                        </div>
+                        <div class="tone-item">
+                            <input type="radio" id="tone-funny" name="tone" value="funny">
+                            <label for="tone-funny">خنده‌دار</label>
+                        </div>
+                        <div class="tone-item">
+                            <input type="radio" id="tone-childish" name="tone" value="childish">
+                            <label for="tone-childish">کودکانه</label>
+                        </div>
+                        <div class="tone-item">
+                            <input type="radio" id="tone-professional" name="tone" value="professional">
+                            <label for="tone-professional">حرفه‌ای</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contentType">قالب محتوا:</label>
+                    <select id="contentType">
+                        <option value="instagram">پست اینستاگرام</option>
+                        <option value="shortStory">داستان کوتاه</option>
+                        <option value="longStory">داستان بلند</option>
+                        <option value="tweet">توییت</option>
+                        <option value="comment">اظهارنظر</option>
+                        <option value="message">پیام</option>
+                        <option value="advertisement">تبلیغات</option>
+                        <option value="blogPost">پست وبلاگ</option>
+                        <option value="essay">انشا</option>
+                        <option value="article">مقاله</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>طول متن:</label>
+                    <div class="length-options">
+                        <div class="length-radio">
+                            <input type="radio" id="length-short" name="length" value="short" checked>
+                            <label for="length-short">کوتاه (زیر ۲۵۰ کلمه)</label>
+                        </div>
+                        <div class="length-radio">
+                            <input type="radio" id="length-medium" name="length" value="medium">
+                            <label for="length-medium">متوسط (۲۵۰ تا ۵۰۰ کلمه)</label>
+                        </div>
+                        <div class="length-radio">
+                            <input type="radio" id="length-long" name="length" value="long">
+                            <label for="length-long">بلند (بیشتر از ۶۰۰ کلمه)</label>
+                        </div>
+                        <div class="length-radio">
+                            <input type="radio" id="length-custom" name="length" value="custom">
+                            <label for="length-custom">سفارشی:</label>
+                        </div>
+                        <div class="custom-length">
+                            <input type="number" id="customLength" placeholder="تعداد کلمات" min="1" max="2000" disabled>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>زبان محتوا:</label>
+                    <div class="language-options">
+                        <div class="language-radio">
+                            <input type="radio" id="lang-persian" name="language" value="persian" checked>
+                            <label for="lang-persian">فارسی</label>
+                        </div>
+                        <div class="language-radio">
+                            <input type="radio" id="lang-english" name="language" value="english">
+                            <label for="lang-english">انگلیسی</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="generateBtn" class="btn primary">تولید محتوا</button>
+            </section>
+            
+            <section class="result-section" id="resultSection" style="display: none;">
+                <h2>محتوای تولید شده</h2>
+                <div class="result-actions">
+                    <button id="copyBtn" class="btn" title="کپی در کلیپ‌بورد">
+                        <i class="fas fa-copy"></i> کپی
+                    </button>
+                    <div class="dropdown">
+                        <button id="saveBtn" class="btn">
+                            <i class="fas fa-save"></i> ذخیره <i class="fas fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#" id="saveWord">Word (.docx)</a>
+                            <a href="#" id="saveSRT">SRT</a>
+                            <a href="#" id="savePDF">PDF</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="result-content" id="resultContent"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>طراحی و توسعه: احسان شمسی &nbsp;&nbsp;|&nbsp;&nbsp; تمامی حقوق محفوظ است &copy; ۱۴۰۳</p>
+        </footer>
+    </div>
+
+    <!-- وابستگی‌های خارجی -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/docx@7.1.0/build/index.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
